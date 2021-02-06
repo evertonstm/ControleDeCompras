@@ -16,7 +16,7 @@ var list = [
 
 ];
 
-function getTotal(list){
+function getTotal(list) {
   var total = 0
 
   for(var key in list){
@@ -24,17 +24,40 @@ function getTotal(list){
     
   }
   return total;
-}
+};
 
-function setList(){
+function setList(list) { 
   var table = '<thead><tr><td>Description</td><td>Amount</td><td>Value</td><td>Action</td></tr></thead><tbody>';
   for (var key in list){
-    table += '<tr><td>'+ list [key].desc +'</td><td>'+ list [key].amount +'</td><td>'+ list [key].value +'</td><td>Edit | Delete</td></tr>';
+    table += '<tr><td>'+ formatDesc(list [key].desc) +'</td><td>'+ list [key].amount  +'</td><td>'+ formatValue(list [key].value) +'</td><td>Edit | Delete</td></tr>';
   }
   table += '<tbody>';
   document.getElementById("listTable").innerHTML = table;
+};
+
+function formatDesc(desc) {
+  var str = desc.toLowerCase();
+  str = str.charAt(0).toUpperCase() + str.slice(1)
+  
+  return str;
+};
+
+function formatValue(value) {
+  var str = parseFloat(value).toFixed(2) + '';
+  str = str.replace(".",",");
+  str = "$ " + str;
+  return str;
+};
+
+function addData() {
+  var desc= document.getElementById("desc").value;
+  var amount= document.getElementById("amount").value;
+  var value= document.getElementById("value").value;
+
+  list.unshift({"desc":desc, "amount":amount, "value":value});
+  setList(list);
+  
 }
 
-setList(list);
 
-console.log(getTotal(list));
+setList(list);
