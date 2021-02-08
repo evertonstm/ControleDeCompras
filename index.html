@@ -14,8 +14,7 @@
         
       </div>
       <div class="navbar-header">
-        <a id="navTitle"class="navbar-brand" href="index.html">
-        </a>
+        <a id="navTitle"class="navbar-brand" href="index.html"></a>
       </div>
     </div>
   </nav>
@@ -31,7 +30,13 @@
         <div class="form-group">
           <input type="text" class="form-control" id='value' placeholder="Value">
         </div>
-        <button onclick="addData();" class="btn btn-default">Add</button>
+        <span id="btnUpdate" style="display: none;">
+          <span id="inputIDUpdate"></span>
+          <button onclick="updateData();" class="btn btn-default">Save</button>
+          <button onclick="resetForm();" class="btn btn-default">Cancel</button>
+        </span>
+        <button id="btnAdd" onclick="addData();" class="btn btn-default">Add</button>
+        
         <table id="listTable"  class="table">
      
         </table>    
